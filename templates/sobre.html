@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="main">
+
+    <!-- Titulo Sobre nós -->
+    <div class="page-title" data-aos="fade">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1 class="">Sobre Nós<br></h1>
+              <p class="mb-0">A Escola Municipal São Sebastião destaca-se por sua dedicação à formação integral de nossas crianças. Além de oferecer um ensino de qualidade, a escola prioriza a transmissão de valores éticos e morais essenciais para o desenvolvimento de um caráter sólido e resiliente.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li><a href="{{ url_for('index') }}">Página Inicial</a></li>
+            <li class="current">Sobre Nós<br></li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <!-- About Us Section -->
+    <section id="about-us" class="section about-us">
+
+      <div class="container">
+        <div class="content" data-aos="fade-up" data-aos-delay="200">
+            <hr>
+            <h3>PILARES DE NOSSA ESCOLA</h3>
+            <hr>
+            <ul>
+              <li><i class="bi bi-check-circle"></i> <span>Educação baseada em valores: A Escola Municipal São Sebastião prioriza a transmissão de valores éticos e morais, como respeito, responsabilidade e empatia, essenciais para a formação de um caráter sólido.</span></li>
+              <li><i class="bi bi-check-circle"></i> <span>Desenvolvimento integral dos alunos: Além do ensino acadêmico, a escola se empenha em promover o desenvolvimento emocional, social e cognitivo dos estudantes, preparando-os para enfrentar os desafios da vida adulta de maneira equilibrada e consciente.</span></li>
+              <li><i class="bi bi-check-circle"></i> <span>Foco na formação para a vida: Acreditamos que os valores e habilidades adquiridos na Escola São Sebastião não apenas beneficiam os alunos durante sua jornada escolar, mas os acompanham ao longo de suas vidas, contribuindo para sua realização pessoal e profissional.</span></li>
+              <li><i class="bi bi-check-circle"></i> <span>Cultivo de cidadãos responsáveis: A escola se compromete em formar não apenas bons estudantes, mas também bons cidadãos, capazes de contribuir positivamente para a sociedade e de agir com integridade em todas as áreas de suas vidas.</span></li>
+            </ul>
+        </div>
+      </div>
+
+    </section><!-- /About Us Section -->
+
+    <!-- Stats About Section -->
+    <section id="stats-about" class="stats-about section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="{{total_alunos}}" data-purecounter-duration="1" class="purecounter"></span>
+              <p class="">Alunos</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-4 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="{{total_professores}}" data-purecounter-duration="1" class="purecounter"></span>
+              <p class="">Professores</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-4 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="{{ total_turmas }}" data-purecounter-duration="1" class="purecounter"></span>
+              <p class="">Turmas</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Stats About Section -->
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Comentários</h2>
+        <p class="">O que dizem sobre nós</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "breakpoints": {
+                "320": {
+                  "slidesPerView": 1,
+                  "spaceBetween": 40
+                },
+                "1200": {
+                  "slidesPerView": 2,
+                  "spaceBetween": 20
+                }
+              }
+            }
+          </script>
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <h3>Joana</h3>
+                  <h4>Mãe da Aluna Carolina</h4>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span>Estamos extremamente satisfeitos com a qualidade do ensino oferecido pela escola. Nossa filha tem mostrado um incrível progresso acadêmico e emocional desde que ingressou no fundamental. Os professores são dedicados e atenciosos, proporcionando um ambiente de aprendizado seguro e acolhedor.</span>
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <h3>Sara Wilsson</h3>
+                  <h4>Mãe da Aluna Ana</h4>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span>Como pais, não poderíamos estar mais felizes com a escolha que fizemos para a educação de nossa filha. A equipe da escola demonstra um compromisso genuíno com o desenvolvimento integral das crianças, estimulando não apenas o aprendizado acadêmico, mas também valores como respeito e empatia. Recomendamos totalmente esta instituição de ensino.</span>
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <h3>João Carlos</h3>
+                  <h4>Pai do Pedro</h4>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span>É incrível ver o entusiasmo com que nosso filho fala sobre suas experiências na escola todos os dias. Os professores são verdadeiros mentores, incentivando a curiosidade e a criatividade, o que tem sido fundamental para o crescimento dele. A comunicação entre a escola e os pais também é excelente, mantendo-nos informados sobre o progresso acadêmico e eventos importantes.</span>
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <h3>Mateus José</h3>
+                  <h4>Pai da Aluna Carla</h4>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span>Estamos muito gratos pelo cuidado e dedicação demonstrados pela equipe da escola em relação à nossa filha. Ela se sente valorizada como indivíduo e está sempre ansiosa para participar das atividades escolares. Além disso, a variedade de recursos educacionais e atividades extracurriculares oferecidas contribui significativamente para o seu desenvolvimento holístico. Não poderíamos pedir uma melhor experiência educacional para ela.</span>
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-wrap">
+                <div class="testimonial-item">
+                  <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+                  <h3>Anna Maria</h3>
+                  <h4>Mãe do Aluno João</h4>
+                  <div class="stars">
+                    <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  </div>
+                  <p>
+                    <i class="bi bi-quote quote-icon-left"></i>
+                    <span>É maravilhoso ver o quanto nosso filho floresceu desde que começou a frequentar esta escola. Os professores não apenas fornecem um excelente ensino acadêmico, mas também se preocupam com o bem-estar emocional e social das crianças. Estamos impressionados com o ambiente inclusivo e acolhedor que a escola proporciona, permitindo que nosso filho se sinta verdadeiramente parte de uma comunidade escolar vibrante.</span>
+                    <i class="bi bi-quote quote-icon-right"></i>
+                  </p>
+                </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+    </section><!-- /Testimonials Section -->
+
+  </main>
+{% endblock %}

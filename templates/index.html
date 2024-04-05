@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="main">
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+
+    <img src="{{ url_for('static', filename='img/img-background.jpg') }}" alt="" data-aos="fade-in">
+
+    <div class="container">
+        <h2 data-aos="fade-up" data-aos-delay="100" class="">Escola Municipal,<br>São Sebastião</h2>
+        <p data-aos="fade-up" data-aos-delay="200">Prefeitura de Itajubá. Governo bom e justo, cidade feliz!</p>
+        <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
+        <a href="#" class="btn-get-started">Fazer Login</a>
+        </div>
+    </div>
+
+    </section><!-- /Hero Section -->
+</main>
+{% endblock %}
