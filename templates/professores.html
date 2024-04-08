@@ -43,7 +43,9 @@
             <td>{{ professor.id_professor }}</td>
             <td>{{ professor.nome_professor }}</td>
             <td>{{ professor.turma }}</td>
-            <td><a class="btn-editar">Editar</a><a class="btn-excluir">Excuir</a></td>
+            <td>
+                <a class="btn-editar" href="{{ url_for('editar_professor', id_professor=professor.id_professor) }}">Editar</a>
+                <a class="btn-excluir" href="{{url_for('deletar_produto', id_professor=professor.id_professor)}}" onclick="return confirm('Deseja realmente deletar esse professor?')">Excuir</a></td>
             </tr>
             {% endfor %}
         </tbody>

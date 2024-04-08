@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="main">
+<div class="paginas">
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+        <div class="heading">
+            <div class="container">
+            <div class="row d-flex justify-content-center text-center">
+                <div class="col-lg-8">
+                <h1>Editar Professor</h1>
+                <p class="mb-0">A Escola Municipal São Sebastião destaca-se por sua dedicação à formação integral de nossas crianças. Além de oferecer um ensino de qualidade, a escola prioriza a transmissão de valores éticos e morais essenciais para o desenvolvimento de um caráter sólido e resiliente.</p>
+                </div>
+            </div>
+            </div>
+        </div>
+        <nav class="breadcrumbs">
+            <div class="container">
+            <ol>
+                <li><a href="{{ url_for('index') }}">Página Inicial</a></li>
+                <li class="current">Editar Professor</li>
+            </ol>
+            </div>
+        </nav>
+    </div><!-- End Page Title -->
+    <br><br>
+
+    <div class="container" data-aos="fade-up" data-aos-delay="200">
+        <div class="d-flex justify-content-center">
+        <form action="{{ url_for('editar_professor', id_professor=professor.id_professor) }}" class="form-control" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="nome_professor" class="form-label">Nome do Professor</label>
+                <input value="{{ professor.nome_professor }}" type="text" class="form-control" name="nome_professor" required>
+            </div>
+            <div class="mb-3">
+                <label for="turma" class="form-label">Turma</label>
+                <select name="turma" id="turma" class="form-control">
+                    <option value="{{ professor.turma }}">{{ professor.turma }}</option>
+                    <option value="Pre 1">Pré 1</option>
+                    <option value="Pre 2">Pré 2</option>
+                    <option value="Primeiro Ano">Primeiro Ano</option>
+                    <option value="Segundo Ano">Segundo Ano</option>
+                    <option value="Terceiro Ano">Terceiro Ano</option>
+                </select>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary mb-3">Editar Professor</button>    
+            </div>
+        </form>
+        </div>
+
+    </div>
+</div>
+</main>
+{% endblock %}

@@ -2,11 +2,12 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from flask import redirect
+from flask import flash
 from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
-
+app.secret_key = "1qaz2wsx3edc"
 # Intanciando o banco de dados
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///escola.db"
 db = SQLAlchemy()
@@ -79,6 +80,32 @@ def cadastrar_professor():
         return render_template("cadastrar_professor.html", status=status)
     else:
         return render_template("cadastrar_professor.html")
+    
+@app.route("/editar_professor/<int:id_professor>", methods=["GET", "POST"])
+def editar_professor(id_professor):
+    if request.method == "POST":
+        dados_editados = request.form
+        professor = db.session.execute(db.select(Professor).filter(Professor.id_professor == id_professor)).scalar()
+        
+        professor.nome_professor = dados_editados['nome_professor']
+        professor.turma = dados_editados['turma']
+        
+        db.session.commit()
+        return redirect("/listar_professores")
+    else:
+        professor = db.session.execute(db.select(Professor).filter(Professor.id_professor == id_professor)).scalar()
+        return render_template("editar_professor.html", professor=professor)
+
+@app.route("/deletar_professor/<int:id_professor>")
+def deletar_produto(id_professor):
+    flash('Produto excluido com sucesso!')
+    try:
+        professor_deletado = db.session.execute(db.select(Professor).filter(Professor.id_professor == id_professor)).scalar()
+        db.session.delete(professor_deletado)
+        db.session.commit()
+    except:
+        flash('Erro ao excluir o Produto!')
+    return redirect("/listar_professores")
 
 @app.route("/listar_alunos")
 def listar_alunos():
