@@ -39,13 +39,15 @@
         </thead>
         <tbody>
             {% for aluno in alunos %}
-            <tr>
-            <td>{{ aluno.id_aluno }}</td>
-            <td>{{ aluno.nome_aluno }}</td>
-            <td>Professor Fulano</td>
-            <td>{{ aluno.turma }}</td>
-            <td><a class="btn-editar">Detalhes</a></td>
-            </tr>
+                <tr>
+                <td>{{ aluno.id_aluno }}</td>
+                <td>{{ aluno.nome_aluno }}</td>
+                <td>{{ aluno.professor }}</td>
+                {% if aluno.professor in professor_map %}
+                    <td>{{ professor_map[aluno.professor].turma }}</td>
+                {% endif %}
+                <td><a class="btn-editar">Detalhes</a></td>
+                </tr>
             {% endfor %}
         </tbody>
         </table>
