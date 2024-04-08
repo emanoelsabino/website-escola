@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="main">
+<div class="paginas">
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+        <div class="heading">
+            <div class="container">
+            <div class="row d-flex justify-content-center text-center">
+                <div class="col-lg-8">
+                <h1>Detalhes do Aluno</h1>
+                <p class="mb-0">A Escola Municipal São Sebastião destaca-se por sua dedicação à formação integral de nossas crianças. Além de oferecer um ensino de qualidade, a escola prioriza a transmissão de valores éticos e morais essenciais para o desenvolvimento de um caráter sólido e resiliente.</p>
+                </div>
+            </div>
+            </div>
+        </div>
+        <nav class="breadcrumbs">
+            <div class="container">
+            <ol>
+                <li><a href="{{ url_for('index') }}">Página Inicial</a></li>
+                <li class="current">Detalhes do Aluno</li>
+            </ol>
+            </div>
+        </nav>
+    </div><!-- End Page Title -->
+    <br><br>
+
+    <div class="container form-control" data-aos="fade-up" data-aos-delay="200">
+        <h3 for="nome_aluno" class="mb-4">Aluno: {{ aluno.nome_aluno }}</h3>
+        <h3 for="nome_aluno" class="mb-4">Pai: {{ aluno.nome_pai }}</h3>
+        <h3 for="nome_aluno" class="mb-4">Contato do Pai: {{ aluno.contato_pai }}</h3>
+        <h3 for="nome_aluno" class="mb-4">Mãe: {{ aluno.nome_mae }}</h3>
+        <h3 for="nome_aluno" class="mb-4">Contato da Mãe: {{ aluno.contato_mae }}</h3>
+        <h3 for="nome_aluno" class="mb-4">Professor(a): {{ aluno.professor }}</h3>
+        <div class="d-flex">
+            <a href="{{url_for('editar_aluno', id_aluno=aluno.id_aluno)}}" class="btn btn-primary">Editar</a>
+            <a href="{{url_for('deletar_aluno', id_aluno=aluno.id_aluno)}}" onclick="return confirm('Deseja realmente deletar esse Aluno?')" class="btn btn-danger">Deletar</a>
+        </div>
+    </div>
+</div>
+</main>
+{% endblock %}

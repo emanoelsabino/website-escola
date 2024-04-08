@@ -97,14 +97,14 @@ def editar_professor(id_professor):
         return render_template("editar_professor.html", professor=professor)
 
 @app.route("/deletar_professor/<int:id_professor>")
-def deletar_produto(id_professor):
-    flash('Produto excluido com sucesso!')
+def deletar_professor(id_professor):
+    flash('Professor excluido com sucesso!')
     try:
         professor_deletado = db.session.execute(db.select(Professor).filter(Professor.id_professor == id_professor)).scalar()
         db.session.delete(professor_deletado)
         db.session.commit()
     except:
-        flash('Erro ao excluir o Produto!')
+        flash('Erro ao excluir o Professor!')
     return redirect("/listar_professores")
 
 @app.route("/listar_alunos")
@@ -113,6 +113,11 @@ def listar_alunos():
     professores = db.session.execute(db.select(Professor)).scalars()
     professor_map = {professor.nome_professor: professor for professor in professores}
     return render_template('alunos.html', alunos=alunos, professor_map=professor_map)
+
+@app.route("/detalhes_aluno/<int:id_aluno>")
+def detalhes_aluno(id_aluno):
+    aluno = db.session.execute(db.select(Aluno).filter(Aluno.id_aluno == id_aluno)).scalar()
+    return render_template('detalhes_aluno.html', aluno=aluno)
 
 @app.route("/cadastrar_aluno", methods=["GET", "POST"])
 def cadastrar_aluno():
@@ -138,6 +143,38 @@ def cadastrar_aluno():
         return render_template("cadastrar_aluno.html", status=status)
     else:
         return render_template("cadastrar_aluno.html", professores=professores)
+
+@app.route("/editar_aluno/<int:id_aluno>", methods=["GET", "POST"])
+def editar_aluno(id_aluno):
+    professores = db.session.execute(db.select(Professor)).scalars()
+    
+    if request.method == "POST":
+        dados_editados = request.form
+        aluno = db.session.execute(db.select(Aluno).filter(Aluno.id_aluno == id_aluno)).scalar()
+        
+        aluno.nome_aluno = dados_editados['nome_aluno']
+        aluno.nome_pai = dados_editados['nome_pai']
+        aluno.nome_mae = dados_editados['nome_mae']
+        aluno.contato_pai = dados_editados['contato_pai']
+        aluno.contato_mae = dados_editados['contato_mae']
+        aluno.professor = dados_editados['professor']
+        
+        db.session.commit()
+        return redirect("/listar_alunos")
+    else:
+        aluno = db.session.execute(db.select(Aluno).filter(Aluno.id_aluno == id_aluno)).scalar()
+        return render_template("editar_aluno.html", aluno=aluno, professores=professores)
+
+@app.route("/deletar_aluno/<int:id_aluno>")
+def deletar_aluno(id_aluno):
+    flash('Aluno excluido com sucesso!')
+    try:
+        aluno_deletado = db.session.execute(db.select(Aluno).filter(Aluno.id_aluno == id_aluno)).scalar()
+        db.session.delete(aluno_deletado)
+        db.session.commit()
+    except:
+        flash('Erro ao excluir o Aluno!')
+    return redirect("/listar_alunos")
 
 @app.route("/contato", methods=["GET", "POST"])
 def contato():

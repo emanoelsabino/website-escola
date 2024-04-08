@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="main">
+<div class="paginas">
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+        <div class="heading">
+            <div class="container">
+            <div class="row d-flex justify-content-center text-center">
+                <div class="col-lg-8">
+                <h1>Detalhes do Aluno</h1>
+                <p class="mb-0">A Escola Municipal São Sebastião destaca-se por sua dedicação à formação integral de nossas crianças. Além de oferecer um ensino de qualidade, a escola prioriza a transmissão de valores éticos e morais essenciais para o desenvolvimento de um caráter sólido e resiliente.</p>
+                </div>
+            </div>
+            </div>
+        </div>
+        <nav class="breadcrumbs">
+            <div class="container">
+            <ol>
+                <li><a href="{{ url_for('index') }}">Página Inicial</a></li>
+                <li class="current">Detalhes do Aluno</li>
+            </ol>
+            </div>
+        </nav>
+    </div><!-- End Page Title -->
+    <br><br>
+
+    <div class="container" data-aos="fade-up" data-aos-delay="200">
+        <div class="d-flex justify-content-center">
+        <form action="{{ url_for('editar_aluno', id_aluno=aluno.id_aluno) }}" class="form-control" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="nome_aluno" class="form-label">Nome do Aluno</label>
+                <input value="{{ aluno.nome_aluno }}" type="text" class="form-control" name="nome_aluno" required>
+            </div>
+            <div class="mb-3">
+                <label for="nome_pai" class="form-label">Nome do Pai</label>
+                <input value="{{ aluno.nome_pai }}" type="text" class="form-control" name="nome_pai" required>
+            </div>
+            <div class="mb-3">
+                <label for="contato_pai" class="form-label">Contato do Pai</label>
+                <input value="{{ aluno.contato_pai }}" type="text" class="form-control" name="contato_pai" required>
+            </div>
+            <div class="mb-3">
+                <label for="nome_mae" class="form-label">Nome da Mãe</label>
+                <input value="{{ aluno.nome_mae }}" type="text" class="form-control" name="nome_mae" required>
+            </div>
+            <div class="mb-3">
+                <label for="contato_mae" class="form-label">Contato da Mãe</label>
+                <input value="{{ aluno.contato_mae }}" type="text" class="form-control" name="contato_mae" required>
+            </div>            
+            <div class="mb-3">
+                <label for="professor" class="form-label">Professor(a)</label>
+                <select name="professor" id="professor" class="form-control">
+                    <option value="{{ aluno.professor }}">{{ aluno.professor }}</option>
+                    {% for professor in professores %}
+                    <option value="{{professor.nome_professor}}">{{professor.nome_professor}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary mb-3">Editar Aluno</button>
+            </div>
+        </form>
+        </div>
+
+    </div>
+</div>
+</main>
+{% endblock %}

@@ -46,7 +46,9 @@
                 {% if aluno.professor in professor_map %}
                     <td>{{ professor_map[aluno.professor].turma }}</td>
                 {% endif %}
-                <td><a class="btn-editar">Detalhes</a></td>
+                <td>
+                    <a href="{{url_for('detalhes_aluno', id_aluno=aluno.id_aluno)}}" class="btn-editar">Detalhes</a>
+                </td>
                 </tr>
             {% endfor %}
         </tbody>
