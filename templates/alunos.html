@@ -47,7 +47,11 @@
                     <td>{{ professor_map[aluno.professor].turma }}</td>
                 {% endif %}
                 <td>
-                    <a href="{{url_for('detalhes_aluno', id_aluno=aluno.id_aluno)}}" class="btn-editar">Detalhes</a>
+                    {% if current_user.nome %}
+                        <a href="{{url_for('detalhes_aluno', id_aluno=aluno.id_aluno)}}" class="btn-editar">Detalhes</a>
+                    {% else %}
+                        <a href="{{url_for('login', url='/listar_alunos')}}" class="btn-editar">Detalhes</a>
+                    {% endif %}
                 </td>
                 </tr>
             {% endfor %}

@@ -70,7 +70,13 @@
                 </select>
             </div>
             <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary mb-3">Cadastrar Aluno</button>
+                {% if current_user.nome %}
+                    <button type="submit" class="btn btn-primary mb-3">Cadastrar Aluno</button>
+                {% else %}
+                    <button class="btn btn-primary mb-3">
+                        <a style="color: white;" href="{{ url_for('login') }}">Cadastrar Aluno</a>
+                    </button>
+                {% endif %}
             </div>
         </form>
         </div>
