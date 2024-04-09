@@ -11,7 +11,11 @@
         <h2 data-aos="fade-up" data-aos-delay="100" class="">Escola Municipal,<br>São Sebastião</h2>
         <p data-aos="fade-up" data-aos-delay="200">Prefeitura de Itajubá. Governo bom e justo, cidade feliz!</p>
         <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-        <a href="#" class="btn-get-started">Fazer Login</a>
+            {% if current_user.nome %}
+            <a href="{{ url_for('logout') }}" class="btn-get-started" title="Clique aqui para SAIR">Olá, {{ current_user.nome }}</a>
+            {% else %}
+            <a href="{{ url_for('login') }}" class="btn-get-started">Fazer Login</a>
+            {% endif %}
         </div>
     </div>
 

@@ -2068,3 +2068,40 @@ section,
   background-color: var(--accent-color);
   font-weight: bold;
 }
+
+/** 
+* Estilização do form-login
+*/
+.form-login {
+  max-width: 500px;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.401);
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+}
+.form-login .submit-login {
+  width: 180px;
+  margin: auto;
+}
+.form-login .btn-getstarted,
+.form-login .btn-getstarted:focus {
+  width: 180px;
+  border: none;
+  margin: 0;
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  font-size: 14px;
+  padding: 8px 25px;
+  border-radius: 50px;
+  transition: 0.8s;
+}
+.form-login .btn-getstarted:hover,
+.form-login .btn-getstarted:focus:hover {
+  color: var(--contrast-color);
+  background: rgba(var(--accent-color-rgb), 0.85);
+}
+.form-login a {
+  color: var(--contrast-color);
+  font-style: italic;
+}

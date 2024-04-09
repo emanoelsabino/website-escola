@@ -58,6 +58,9 @@
                 </ul>
             </li>
             <li><a href="{{ url_for('contato') }}">Contato</a></li>
+            {% if current_user.nome %}
+                <li><a>Olá, {{ current_user.nome }}</a></li>
+            {% endif %}
 
             <!-- <li><a href="#">Events</a></li>
             <li><a href="#">Pricing</a></li> -->
@@ -111,8 +114,12 @@
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
-
-        <a class="btn-getstarted" href="#">Fazer Login</a>
+        
+        {% if current_user.nome %}
+            <a class="btn-getstarted" href="{{ url_for('logout') }}">Sair</a>
+        {% else %}
+            <a class="btn-getstarted" href="{{ url_for('login') }}">Fazer Login</a>
+        {% endif %}
 
     </div>
     </header>

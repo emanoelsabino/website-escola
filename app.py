@@ -4,14 +4,21 @@ from flask import request
 from flask import redirect
 from flask import flash
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager, UserMixin
+from flask_login import login_user, logout_user
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 app = Flask(__name__)
 app.secret_key = "1qaz2wsx3edc"
-# Intanciando o banco de dados
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///escola.db"
 db = SQLAlchemy()
 db.init_app(app)
+login_manager = LoginManager(app)
+
+@login_manager.user_loader
+def get_user(user_id):
+    return Usuario.query.filter_by(id=user_id).first()
 
 
 class Professor(db.Model):
@@ -45,9 +52,64 @@ class Aluno(db.Model):
         self.professor = professor
 
 
+class Usuario(db.Model, UserMixin):
+    __tablename__ = 'usuarios'
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(100), nullable=False)
+    senha = db.Column(db.String(128), nullable=False)
+    email = db.Column(db.String(100), nullable=False, unique=True)
+    
+    def __init__(self, nome: str, senha: str, email: str) -> None:
+        self.nome = nome
+        self.senha = generate_password_hash(senha)
+        self.email = email
+    
+    def verifica_senha(self, senha):
+        return check_password_hash(self.senha, senha)
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == 'POST':
+        nome = request.form['nome']
+        email = request.form['email']
+        senha = request.form['senha']
+        
+        try:
+            usuario = Usuario(nome, senha, email)
+            db.session.add(usuario)
+            db.session.commit()
+        except:
+            print('erro')
+        return render_template("register.html")
+    return render_template("register.html")
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        email = request.form['email']
+        senha = request.form['senha']
+        
+        usuario = Usuario.query.filter_by(email=email).first()
+        
+        if not usuario:
+            return redirect("/login")
+        elif not Usuario.verifica_senha(usuario, senha):
+            return redirect("/login")
+        
+        login_user(usuario)
+        return redirect("/")
+    
+    return render_template("login.html")
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect("/")
 
 @app.route("/sobre")
 def sobre():

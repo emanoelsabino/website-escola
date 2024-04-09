@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="main">
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+
+    <img src="{{ url_for('static', filename='img/img-background.jpg') }}" alt="" data-aos="fade-in">
+
+    <div class="container">
+        <div data-aos="fade-up" data-aos-delay="200" class="form-login">
+            <h1>Cadastre-se</h1>
+            <form action="{{ url_for('register') }}" method="post">
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="nome" required placeholder="Nome do Usuario">
+                </div>
+                <div class="mb-3">
+                    <input type="email" class="form-control" name="email" required placeholder="E-mail">
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" name="senha" required placeholder="Senha">
+                </div>
+                <div class="submit-login">
+                    <input type="submit" value="Cadastrar Usuário" class="btn-getstarted">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    </section><!-- /Hero Section -->
+</main>
+{% endblock %}
