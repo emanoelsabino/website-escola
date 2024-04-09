@@ -39,19 +39,13 @@
         <ul>
             <li><a href="{{ url_for('index') }}" class="active">Página Inicial</a></li>
             <li><a href="{{ url_for('sobre') }}">Sobre Nós</a></li>            
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Professores
-                </a>
+            <li class="nav-item dropdown has-dropdown"><a href="{{ url_for('listar_professores') }}"><span>Professores</span> <i class="bi bi-chevron-down"></i></a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="{{ url_for('listar_professores') }}">Ver Professores</a></li>
                   <li><a class="dropdown-item" href="{{ url_for('cadastrar_professor') }}">Cadastrar Professor</a></li>
                 </ul>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Alunos
-                </a>
+            <li class="nav-item dropdown has-dropdown"><a href="{{ url_for('listar_alunos') }}"><span>Alunos</span> <i class="bi bi-chevron-down"></i></a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="{{ url_for('listar_alunos') }}">Ver Alunos</a></li>
                   <li><a class="dropdown-item" href="{{ url_for('cadastrar_aluno') }}">Cadastrar Aluno</a></li>
